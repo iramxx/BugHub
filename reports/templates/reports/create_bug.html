@@ -1,0 +1,31 @@
+{% extends "reports/base.html" %}
+{% load static %}
+{% block title %}Submit a Bug{% endblock %}
+
+{% block content %}
+<h2>Submit a New Bug</h2>
+
+<!-- (Optional) Show form errors -->
+{% if form.errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+          <li><strong>{{ field|capfirst }}:</strong> {{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <!-- Example: Real-time character count on description -->
+  <div id="descriptionCounter" style="font-size: 0.9em; color: gray;"></div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
+
+

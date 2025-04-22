@@ -1,0 +1,29 @@
+{% extends "reports/base.html" %}
+
+{% block title %}Signup - BugHub{% endblock %}
+
+{% block content %}
+<h2>Sign Up</h2>
+
+<!-- Show errors if form is invalid -->
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Errors:</strong>
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li><strong>{{ field|capfirst }}</strong>: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
+<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+{% endblock %}

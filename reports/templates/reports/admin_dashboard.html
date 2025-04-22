@@ -1,0 +1,41 @@
+{% extends "reports/base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome Admin {{ user.username }}</h2>
+
+<h3>All Users</h3>
+<ul>
+  {% for u in all_users %}
+    <li>
+      {{ u.username }} - Role: {{ u.role }} 
+      {% if not u.is_active %}
+        (BANNED)
+      {% endif %}
+      <!-- Option to ban/unban user if it's not self -->
+      {% if u != user %}
+        <!-- For quick toggling: /admin-ban-user/<user_id>/true/ or /false/ -->
+        {% if u.is_active %}
+          <a href="{% url 'toggle_user_active' u.id 0 %}">Ban User</a>
+        {% else %}
+          <a href="{% url 'toggle_user_active' u.id 1 %}">Unban User</a>
+        {% endif %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h3>All Bugs</h3>
+<ul>
+  {% for bug in all_bugs %}
+    <li>
+      <strong>{{ bug.title }}</strong> - Status: {{ bug.status }}
+      <br>Reporter: {{ bug.reporter.username }} - Company: {{ bug.company.username }}
+    </li>
+  {% empty %}
+    <li>No bugs in the system.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

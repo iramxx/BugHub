@@ -1,0 +1,22 @@
+{% extends "reports/base.html" %}
+{% block title %}Researcher Dashboard{% endblock %}
+
+{% block content %}
+  <h2>Welcome Researcher {{ user.username }}</h2>
+
+  <!-- Button to create a new bug -->
+  <p><a class="btn btn-primary" href="{% url 'create_bug' %}">Submit a New Bug</a></p>
+
+  <h3>Your Reports:</h3>
+  <ul>
+    {% for bug in user_bugs %}
+      <li>
+        <strong>{{ bug.title }}</strong> (Status: {{ bug.status }}, Level: {{ bug.level }})
+        <br>Reported to: {{ bug.company.username }}
+        <br>Submitted on: {{ bug.date_submitted|date:"Y-m-d H:i" }}
+      </li>
+    {% empty %}
+      <li>No reports yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

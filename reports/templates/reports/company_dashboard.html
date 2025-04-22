@@ -1,0 +1,28 @@
+{% extends "reports/base.html" %}
+{% block title %}Company Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome Company {{ user.username }}</h2>
+<h3>Reports assigned to your company:</h3>
+
+<ul>
+  {% for bug in company_bugs %}
+    <li>
+      <strong>{{ bug.title }}</strong> 
+      (Status: {{ bug.status }}, Severity: {{ bug.level }})
+      <br>Reporter: {{ bug.reporter.username }}
+      <br>Date Submitted: {{ bug.date_submitted|date:"Y-m-d H:i" }}
+
+      <!-- Simple link to update the status -->
+      <p>
+        Update Status:
+        <a href="{% url 'update_bug_status' bug.id 'accepted' %}">Accept</a> |
+        <a href="{% url 'update_bug_status' bug.id 'rejected' %}">Reject</a> |
+        <a href="{% url 'update_bug_status' bug.id 'resolved' %}">Resolve</a>
+      </p>
+    </li>
+  {% empty %}
+    <li>No reports yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: black !important;
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+  
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: skyblue !important;
+}
+
+footer {
+    background-color: blue;
+    color: white;
+}
+
+.container {
+    padding-bottom: 60px; /* Adjust if needed */
+}
+
