@@ -1,9 +1,9 @@
-# 🐞 BugHub - Ethical Hacking & Bug Bounty Platform
+#  BugHub - Ethical Hacking & Bug Bounty Platform
 
-## 💡 The Idea of the Project
+##  The Idea of the Project
 BugHub is a full-stack bug bounty platform designed to connect ethical hackers (researchers) with companies seeking to improve their cybersecurity. It provides a secure environment for researchers to submit vulnerability reports and for companies to review and respond to those reports. The platform features role-based dashboards and intuitive workflows for efficient report handling.
 
-## ✨ The Features
+##  The Features
 - Role-based authentication: Researchers, Companies, and Admins
 - Researchers can:
   - Submit and track bug reports
@@ -19,7 +19,7 @@ BugHub is a full-stack bug bounty platform designed to connect ethical hackers (
 - Secure user authentication system
 - Structured backend using Django framework
 
-## 🧠 What I Have Learned
+##  What I Have Learned
 - Designed and implemented a multi-role system using Django
 - Developed user dashboards with dynamic content rendering
 - Managed database relations for users, reports, and statuses
